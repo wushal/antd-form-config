@@ -1,0 +1,113 @@
+
+@borderColor:#EDF0F5;
+@rowHight:45px;
+.page-banner{
+  height:60px;
+  .banner-button{
+    float:right;
+    margin:12px;
+  }
+  .btn-preview{
+    margin-right:15px;
+  }
+}
+.page-style {
+  display:flex;
+   height:100vh;
+   background:@borderColor;
+   border:10px solid @borderColor;
+}
+.page-left{
+  padding:12px;
+  height:100%;
+  flex:1;
+  max-width: 380px;
+  background:#fff;
+  overflow: scroll;
+  .page-left-title{
+    margin:12px;
+  }
+  .ant-input{
+    height:28px;
+  }
+  .left-element{
+    position: relative;
+    height: 46px;
+    float: left;
+    width: 167px;
+    margin: 5px;
+    text-align: center;
+    line-height: 3;
+    border-radius: 5px;
+    border: 1px solid #C2C2C2;
+
+  }
+  .left-draging-icon{
+    position: absolute;
+    top:2px;
+    left:20px;
+    
+  }
+  .used-selected{
+    background:#F3F3F3;
+  }
+}
+
+.page-right{
+  flex:1;
+  border-left:10px solid @borderColor;
+  background:#fff;
+  overflow: scroll;
+  .page-right-title{
+    margin:12px 12px 20px 12px;
+  }
+  .draggleRow{
+    font-size:0;
+  }
+  .page-row{
+    margin:0px 12px 0px 20px;
+    width:96%;
+    display:flex;
+    margin-top: -1px;
+    .header-span{
+      height: 18px;
+      width:18px;
+      border: 1px solid @borderColor;
+      margin-right: 10px;
+    }
+    .header-span:hover{
+      background:#E9F6FE;
+    }
+    .page-col{
+      flex:1;
+      height:@rowHight;
+      height: 18px;
+      margin-top: -1px;
+      margin-left: -1px;
+      border:1px solid @borderColor;
+    }
+    .draggleDiv{
+      height:@rowHight;
+    }
+    .text{
+      padding:12px 0px 10px 30px;
+    }
+  }
+  .page-add-col{
+    height:@rowHight;
+    padding-left: 18px;
+    font-size: 25px;
+    border:1px solid @borderColor;
+    flex:1;
+    margin-left: -1px;
+    margin-top: -1px;
+    padding-top:1px;
+  }
+  .page-add-col:hover{
+    background:@borderColor;
+  }
+}
+.ant-form-item{
+  margin-bottom:0px!important;
+}
+
