@@ -2,7 +2,7 @@
   "name": "antd-form-config",
   "version": "0.0.1",
   "description": "form config",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "npm run dev",
     "dev": "NODE_ENV=development webpack-dev-server --config server/start.js",
