@@ -1,54 +1,71 @@
-const path= require('path');
+const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-
+const eslintFormatter = require('eslint-friendly-formatter');
 
 module.exports = {
-  mode:'development',
-  entry: './src/app.js',
-  devtool: 'inline-source-map',
+  mode: 'development',
+  entry: path.join(__dirname, '../src/app.js'),
   output: {
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].chunk.js',
-    path: path.resolve('dist'),
+    path: path.resolve('../dist'),
     publicPath: '/',
   },
-  resolve:{
-    extensions:['.js','.json'],
+  devtool: 'cheap-module-eval-source-map',
+  resolve: {
+    extensions: ['.js', '.json'],
+    alias: {
+      '@': path.resolve('../src'),
+    },
   },
-  module:{
-    noParse:[/moment/],
-    rules:[
+  module: {
+    noParse: [/moment/],
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        enforce: 'pre',
+        use: [
+          {
+            options: {
+              formatter: eslintFormatter,
+              cache: true,
+            },
+            loader: 'eslint-loader',
+          },
+        ],
+        include: path.resolve('../src'),
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use:[
+        use: [
           {
-            loader:'babel-loader',
-            options:{
-              cacheDirectory:true
-            }
-          }
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            },
+          },
         ],
-        //include: path.resolve('src'),
+        include: path.resolve('../src'),
       },
       {
-        test: /\.(css | less)$ /,
-        use:[
+        test: /\.(css|less)$/,
+        use: [
           'style-loader',
           {
-            loader:'css-loader',
-            options:{
-              importLoader:2
-            }
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
           },
           'postcss-loader',
           {
-            loader:'less-loader',
-            options:{
-              javascriptEnabled:true
-            }
-          }
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+            },
+          },
         ],
         include: /node_modules/,
       },
@@ -65,7 +82,7 @@ module.exports = {
           'postcss-loader',
           'less-loader',
         ],
-        //include: path.resolve(''),
+        include: path.resolve('../src'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -81,24 +98,24 @@ module.exports = {
         options: {
           name: 'fonts/[name].[ext]',
         },
-      }
-    ]
+      },
+    ],
   },
-  plugins:[
+  plugins: [
+    // hot update
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
-      template:'./public/index.html',
-      filename:'index.html',
-      favicon:'./public/favicon.ico',
-      inject:true
-    })
+      template: './public/index.html',
+      filename: 'index.html',
+      favicon: './public/favicon.ico',
+      inject: true,
+    }),
   ],
   node: {
-    dns: "mock",
-    fs: "empty",
+    dgram: 'empty',
+    fs: 'empty',
     net: 'empty',
     tls: 'empty',
     child_process: 'empty',
-  }
-
+  },
 }

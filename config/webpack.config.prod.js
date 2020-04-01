@@ -11,18 +11,18 @@ const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    index: './src/app.js',
+    index:path.join(__dirname,'../src/app.js')
   },
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',
-    path: path.resolve('dist'),
+    path: path.resolve('../dist'),
   },
   devtool: 'false',
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      '@': path.resolve('src'),
+      '@': path.resolve('../src'),
     },
   },
   module: {
@@ -32,14 +32,14 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)/,
-        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
           },
         },
-        include: path.resolve('src'),
+        exclude: /node_modules/,
+        include: path.resolve('../src'),
       },
       // css
       {

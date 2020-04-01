@@ -10,35 +10,6 @@ function AntdFormConfig (props){
   const [elementMap, setElementMap] = useState({})
   const [rightList,setRightList] = useState([])
   const [leftList,setLeftList] = useState([])
-  //const rightData = []
-  // const rightData = [{
-  //   "Row0": [{ id: 'name', componentType: 'input', title: '姓名' }, { id: 'sex', componentType: 'radio', title: '性别', isRequire: 1 },
-  //   { id: 'mobile', componentType: 'input', title: '手机' }]},
-  //   {"Row1": [{ id: 'address', componentType: 'input', title: '地址' }, { id: 'reason', componentType: 'input', title: '归档原因' }, { id: 'collectTime', componentType: 'date', title: '采样日期' }]},
-  //   // "Row2": [{ id: 'height', componentType: 'input', title: '身高' }, { id: 'gravidity', componentType: 'input-number', title: '孕次'},
-  //   //   { id: 'parity', componentType: 'input-number', title: '产次' }],
-  // ]
-
-  const leftData = [{
-    id:'name',
-    title:'姓名'
-  }, {
-      id: 'sex',
-      title: '性别'
-    }, {
-      id: 'mobile',
-      title: '手机'
-    }, {
-      id: 'height',
-      title: '身高'
-    }, {
-      id: 'gravidity',
-      title: '孕次'
-    }, {
-      id: 'parity',
-      title: '产次'
-    }]
-
   const configData = []
   rightData.map((item, i) => item['Row' + i].map(n => configData.push(n)))
 

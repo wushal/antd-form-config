@@ -18,9 +18,9 @@ function clean(dirname) {
 }
 
 try {
-  clean(path.resolve(__dirname, '../lib'))
-  clean(path.resolve(__dirname, '../assets'))
-  clean(path.resolve(__dirname, '../style'))
+  clean(path.resolve(__dirname, 'lib'))
+  clean(path.resolve(__dirname, 'assets'))
+  clean(path.resolve(__dirname, 'style'))
 } catch (err) {
   console.log(err);
 }
