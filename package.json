@@ -1,6 +1,6 @@
 {
   "name": "antd-form-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "form config",
   "main": "lib/index.js",
   "scripts": {
@@ -79,4 +79,3 @@
     "webpack-merge": "^4.2.1"
   }
 }
-
