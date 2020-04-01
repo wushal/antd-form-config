@@ -22,5 +22,6 @@ try {
   clean(path.resolve(__dirname, 'assets'));
   clean(path.resolve(__dirname, 'style'));
 } catch (err) {
+  // eslint-disable-next-line no-console
   console.log(err);
 }

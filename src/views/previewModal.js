@@ -48,7 +48,11 @@ function PreviewModal(props) {
               getFieldDecorator(value.id, {
                 rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Select>{value.options && value.options.map((item) => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>,
+                <Select>
+                  <Select.Option value={1}>1</Select.Option>
+                  <Select.Option value={2}>2</Select.Option>
+                  <Select.Option value={3}>3</Select.Option>
+                </Select>,
               )
             }
           </Form.Item>
@@ -61,7 +65,11 @@ function PreviewModal(props) {
               getFieldDecorator(value.id, {
                 rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Select mode='multiple'>{value.options && value.options.map((item) => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>,
+                <Select mode='multiple'>
+                  <Select.Option value={1}>1</Select.Option>
+                  <Select.Option value={2}>2</Select.Option>
+                  <Select.Option value={3}>3</Select.Option>
+                </Select>,
               )
             }
           </Form.Item>
