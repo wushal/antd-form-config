@@ -5,7 +5,7 @@ const eslintFormatter = require('eslint-friendly-formatter');
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, '../src/app.js'),
+  entry: './src/app.js',
   output: {
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].chunk.js',
@@ -38,19 +38,13 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-            },
-          },
-        ],
-        include: path.resolve('../src'),
+        use: {
+          loader: "babel-loader",
+        },
+        exclude: /node_modules/
       },
       {
-        test: /\.(css|less)$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
@@ -82,7 +76,7 @@ module.exports = {
           'postcss-loader',
           'less-loader',
         ],
-        include: path.resolve('../src'),
+        //include: path.resolve('../src'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

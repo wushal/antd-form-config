@@ -1,12 +1,11 @@
-import React from 'react'
-import Modal from 'antd/es/modal'
-import Input from 'antd/es/input'
-import Button from 'antd/es/button'
-import Select from 'antd/es/select'
-import Form from 'antd/es/form'
-import Row from 'antd/es/row'
-import Col from 'antd/es/col'
-import Radio from 'antd/es/radio'
+import React from 'react';
+import Modal from 'antd/es/modal';
+import Input from 'antd/es/input';
+import Select from 'antd/es/select';
+import Form from 'antd/es/form';
+import Row from 'antd/es/row';
+import Col from 'antd/es/col';
+import Radio from 'antd/es/radio';
 
 import DatePicker from 'antd/es/date-picker';
 
@@ -15,84 +14,86 @@ const { RangePicker } = DatePicker;
 const formLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 8 }
+    sm: { span: 8 },
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 16 }
-  }
-}
+    sm: { span: 16 },
+  },
+};
 
-function PreviewModal(props){
-  const { visible, onCancel, dataMap } = props
+function PreviewModal(props) {
+  const { visible, onCancel, dataMap } = props;
 
-  function  renderForm(value) {
+  function FormMap(value) {
     const { getFieldDecorator } = props.form;
-    if(value.title){
-      if (value.componentType === 'input'){
+    if (value.title) {
+      if (value.componentType === 'input') {
         return (
           <Form.Item {...formLayout} label={value.title}>
             {
               getFieldDecorator(value.id, {
-                rules: [{ required: value.isRequire === 1 ? true : '' }]
+                rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Input />
+                <Input />,
               )
             }
           </Form.Item>
-          )
-
+        );
       }
-      else if (value.componentType === 'select-single') {
+      if (value.componentType === 'select-single') {
         return (
           <Form.Item {...formLayout} label={value.title}>
             {
               getFieldDecorator(value.id, {
-                rules: [{ required: value.isRequire === 1 ? true : '' }]
+                rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Select>{value.options && value.options.map(item => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>
+                <Select>{value.options && value.options.map((item) => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>,
               )
             }
           </Form.Item>
-        )
+        );
       }
-      else if (value.componentType === 'select-multiple') {
+      if (value.componentType === 'select-multiple') {
         return (
           <Form.Item {...formLayout} label={value.title}>
             {
               getFieldDecorator(value.id, {
-                rules: [{ required: value.isRequire === 1 ? true : '' }]
+                rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Select mode="multiple">{value.options && value.options.map(item => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>
+                <Select mode='multiple'>{value.options && value.options.map((item) => <Select.Option key={item.value} value={item.value}>{item.title}</Select.Option>)}</Select>,
               )
             }
           </Form.Item>
-        )
-      } else if (value.componentType === 'radio') {
+        );
+      } if (value.componentType === 'radio') {
         return (
           <Form.Item {...formLayout} label={value.title}>
             {
               getFieldDecorator(value.id, {
-                rules: [{ required: value.isRequire === 1 ? true : '' }]
+                rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <Radio.Group><Radio value={'男'}>男</Radio><Radio value={'女'}>女</Radio></Radio.Group>
+                <Radio.Group>
+                  <Radio value='男'>男</Radio>
+                  <Radio value='女'>女</Radio>
+                </Radio.Group>,
               )
             }
           </Form.Item>
-        )
+        );
       }
-      else if (value.componentType === 'date') {
+      if (value.componentType === 'date') {
         return (
           <Form.Item {...formLayout} label={value.title}>
             {
               getFieldDecorator(value.id, {
-                rules: [{ required: value.isRequire === 1 ? true : '' }]
+                rules: [{ required: value.isRequire === 1 ? true : '' }],
               })(
-                <RangePicker />
+                <RangePicker />,
               )
             }
           </Form.Item>
-        )
+        );
       }
     }
   }
@@ -106,21 +107,21 @@ function PreviewModal(props){
     >
       <Form>
         {
-          dataMap.map((item,i) => (
-            <Row key={i}>
+          dataMap.map((item, inx) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Row key={inx}>
               {
-                item['Row' + i].map((n, index) => (
-                  <Col span={8} key={n.id}>{renderForm(n)}</Col>
+                item[`Row${inx}`].map((n, index) => (
+                  <Col span={8} key={n.id}>{FormMap(n)}</Col>
                 ))
               }
             </Row>
           ))
         }
       </Form>
-  
-    </Modal>
-  )
 
+    </Modal>
+  );
 }
 
-export default Form.create()(PreviewModal)
+export default Form.create()(PreviewModal);

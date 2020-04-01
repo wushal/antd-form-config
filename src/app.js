@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import ConfigProvider from 'antd/es/config-provider';
 import zhCN from 'antd/es/locale/zh_CN';
-import AntdFormConfig from './views/index.js';
+import AntdFormConfig from './views/index';
 import './app.less';
 
 const App = () => (
@@ -12,4 +12,4 @@ const App = () => (
 );
 
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'));

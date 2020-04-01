@@ -7,8 +7,7 @@ export default function DragglePage(props) {
   const [isDarging, setIsDraging] = useState(false);
   const [position, setPosition] = useState({ offsetX: 0, offsetY: 0 });
   function handleDragStart(e) {
-    e.persist()
-    //e.target.style.opacity = 0.45;
+    e.persist();
     e.dataTransfer.setData('element', JSON.stringify(element));
     setPosition({
       offsetX: e.nativeEvent.offsetX,
@@ -16,7 +15,7 @@ export default function DragglePage(props) {
     });
   }
   function handleDragEnd(e) {
-    e.persist()
+    e.persist();
     const left = e.pageX - position.offsetX;
     const top = e.pageY - position.offsetY;
     e.target.style.opacity = '';

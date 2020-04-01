@@ -1,6 +1,6 @@
-'use strict';
+'use sttict';
 
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   throw err;
 });
 
@@ -14,7 +14,7 @@ const host = '127.0.0.1';
 const port = 3012;
 
 /**
- * combination devConfig and devServer 
+ * combination devConfig and devServer
  * product serverConfig
  */
 const serverConfig = merge(devConfig, {
@@ -22,12 +22,12 @@ const serverConfig = merge(devConfig, {
     clientLogLevel: 'none',
     compress: true,
     historyApiFallback: true,
-    host: host,
+    host,
     hot: true,
     inline: true,
     open: true,
     overlay: false,
-    port: port,
+    port,
     proxy: {},
     progress: false,
     publicPath: '/',
@@ -41,12 +41,12 @@ const serverConfig = merge(devConfig, {
 serverConfig.plugins.push(
   // app start show progress
   new ProgressBarPlugin({
-    format: '  start server [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+    format: `  start server [:bar] ${chalk.green.bold(':percent')} (:elapsed seconds)`,
     clear: false,
-    summaryContent: false
+    summaryContent: false,
   }),
   /**
-   * Friendly-errors-webpack-plugin recognizes certain classes of webpack errors and cleans 
+   * Friendly-errors-webpack-plugin recognizes certain classes of webpack errors and cleans
    * aggregates and prioritizes them to provide a better Developer Experience.
    */
   new FriendlyErrorsPlugin({
